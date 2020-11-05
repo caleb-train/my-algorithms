@@ -26,13 +26,11 @@ function merge(arr1, arr2) {
   return mergeArray;
 }
 
-function split(arr) {
-  const mid = Math.floor(arr.length / 2);
-  const start = arr.slice(0, mid);
-  const end = arr.slice(mid);
-  return [start, end];
-}
-
 export default function mergeSort(arr) {
-  console.log(merge([1, 3, 5, 7, 9], [2, 4, 6, 8]), split(arr));
+  if (arr.length <= 1) return arr;
+  const mid = Math.floor(arr.length / 2);
+  let start = mergeSort(arr.slice(0, mid));
+  let end = mergeSort(arr.slice(mid));
+  console.log(merge(start, end));
+  return merge(start, end);
 }
