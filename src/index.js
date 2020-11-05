@@ -1,4 +1,5 @@
 import "./styles.css";
+import "./sortingAlgorithms";
 
 document.getElementById("app").innerHTML = `
 <h1>Algorithms</h1>
