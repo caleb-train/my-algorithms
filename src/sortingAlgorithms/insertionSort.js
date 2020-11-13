@@ -1,19 +1,19 @@
-function swap(arr1, arr2, arr) {
-  let temp = arr[arr1];
-  arr[arr1] = arr[arr2];
-  arr[arr2] = temp;
+let passes = 0;
+function insertionSort(arr = []) {
+  for (let i = 1; i < arr.length; i++) {
+    var currVal = arr[i];
+    for (var j = i - 1; j >= 0 && arr[j] > currVal; j--) {
+      arr[j + 1] = arr[j];
+      passes++;
+    }
+    arr[j + 1] = currVal;
+  }
   return arr;
 }
 
-function selection(arr = []) {
-  let selArr = arr;
-  for (let i = 1; i < selArr.length; i++) {
-    for (let j = i - 1; j >= 0 && selArr[j] < selArr[j - 1]; j--) {
-      selArr = swap(j - 1, j, selArr);
-      console.log(selArr);
-    }
-  }
-  return selArr;
-}
-
-selection([2, 1, 9, 76, 4]);
+console.log(
+  "insertion sort",
+  "9, 5, 7, 0, 6, 8, 4, 2, 1, 10",
+  insertionSort([9, 5, 7, 0, 6, 8, 4, 2, 1, 10]),
+  passes
+);

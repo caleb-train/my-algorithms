@@ -5,19 +5,26 @@ function swap(arr1, arr2, arr) {
   return arr;
 }
 
+let pass = 0;
 function select(arr = []) {
   let arrSelect = arr;
   for (let i = 0; i < arrSelect.length; i++) {
-    console.log(arrSelect);
-    let selectInd = i;
-    for (let j = i; j < arrSelect.length; j++) {
-      if (arrSelect[selectInd] > arrSelect[j + 1]) {
-        selectInd = j + 1;
+    let lowest = i;
+    for (let j = i + 1; j < arrSelect.length; j++) {
+      if (arrSelect[j] < arrSelect[lowest]) {
+        lowest = j;
       }
+      pass++;
     }
 
-    if (selectInd !== i) arrSelect = swap(i, selectInd, arrSelect);
+    if (lowest !== i) arrSelect = swap(i, lowest, arrSelect);
   }
   return arrSelect;
 }
-console.log(select([9, 5, 7, 0, 6, 8, 4, 2, 1, 10]));
+
+console.log(
+  "selection sort",
+  "9, 5, 7, 0, 6, 8, 4, 2, 1, 10",
+  select([9, 5, 7, 0, 6, 8, 4, 2, 1, 10]),
+  pass
+);

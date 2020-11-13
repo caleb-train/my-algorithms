@@ -25,12 +25,19 @@ function merge(arr1, arr2) {
 
   return mergeArray;
 }
-
-export default function mergeSort(arr) {
+let pass = 0;
+function mergeSort(arr) {
   if (arr.length <= 1) return arr;
+  pass++;
   const mid = Math.floor(arr.length / 2);
   let start = mergeSort(arr.slice(0, mid));
   let end = mergeSort(arr.slice(mid));
-  console.log(merge(start, end));
   return merge(start, end);
 }
+
+console.log(
+  "merge sort",
+  "9, 5, 7, 0, 6, 8, 4, 2, 1, 10",
+  mergeSort([9, 5, 7, 0, 6, 8, 4, 2, 1, 10]),
+  pass
+);
